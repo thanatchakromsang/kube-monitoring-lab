@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: jaeger-datasource
+  labels:
+    grafana_datasource: "1"
+data:
+  jaeger-datasource.yaml: |-
+    apiVersion: 1
+    datasources:
+      - name: Jaeger
+        type: jaeger
+        access: proxy
+        url: http://jaeger-query:16687
+        version: 1

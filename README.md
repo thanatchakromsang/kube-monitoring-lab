@@ -55,4 +55,7 @@ helm upgrade --install jaeger \
   jaegertracing/jaeger \
   --namespace monitoring \
   -f charts/jaeger/values-override.yaml
+
+# Apply Grafana datasources
+kubectl apply -f charts/jaeger/datasources.yaml
 ```
