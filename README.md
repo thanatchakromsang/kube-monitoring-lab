@@ -13,7 +13,6 @@ Setup Minikube 2 node cluster with docker driver and switched to minikube kubect
 
 ```bash
 minikube start --driver=docker
-minikube node add
 minikube update-context
 ```
 
@@ -24,7 +23,7 @@ Add required helm charts for it to be available during charts installation
 ```bash
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm repo add jaegertracing https://jaegertracing.github.io/helm-charts
-helm repo add loki https://grafana.github.io/loki/charts
+helm repo add grafana https://grafana.github.io/helm-charts
 
 helm repo update
 ```
@@ -40,15 +39,9 @@ install or update required charts with overrided values for labs
 ```bash
 # Install loki-stack
 helm upgrade --install loki \
-  loki/loki-stack \
+  grafana/loki-stack \
   --namespace monitoring \
   -f charts/loki-stack/values-override.yaml
-
-# Install kube-prometheus-stack
-helm upgrade --install kube-prometheus-stack \
-  prometheus-community/kube-prometheus-stack \
-  --namespace monitoring \
-  -f charts/kube-prometheus-stack/values-override.yaml
 
 # Install jaeger
 helm upgrade --install jaeger \
@@ -58,4 +51,10 @@ helm upgrade --install jaeger \
 
 # Apply Grafana datasources
 kubectl apply -f charts/jaeger/datasources.yaml
+
+# Install kube-prometheus-stack
+helm upgrade --install kube-prometheus-stack \
+  prometheus-community/kube-prometheus-stack \
+  --namespace monitoring \
+  -f charts/kube-prometheus-stack/values-override.yaml
 ```
