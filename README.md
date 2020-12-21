@@ -9,7 +9,7 @@ Learn monitoring on kubernetes the right way by doing using OSS tools
 
 ## Setup Minikube
 
-Setup Minikube 2 node cluster with docker driver and switched to minikube kubectl context
+Setup Minikube with virtualbox driver and switched to minikube kubectl context
 
 ```bash
 minikube start --driver=docker
