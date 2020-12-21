@@ -1,0 +1,7 @@
+prometheus:
+  prometheusSpec:
+    containers:
+    - name: prometheus
+      env:
+      - name: JAEGER_AGENT_PORT
+        value: "5775"
