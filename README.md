@@ -58,3 +58,18 @@ helm upgrade --install kube-prometheus-stack \
   --namespace monitoring \
   -f charts/kube-prometheus-stack/values-override.yaml
 ```
+
+## Troubleshoot
+
+### Fluentbit Output Error
+
+https://github.com/grafana/helm-charts/issues/131 for more information.
+
+Fluent-bit v2.1.0 Output plugin `grafana-loki` cannot be loaded output caused by failed configuration migrated charts from `loki/loki` to `grafana/loki`
+
+```bash
+kubectl edit configmaps loki-fluent-bit-loki
+```
+
+Then edit Output from `grafana-loki` to `loki`
+
