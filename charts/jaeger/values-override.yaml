@@ -1,0 +1,17 @@
+# Use elasticsearch rather than cassandra per recommendation for production
+provisionDataStore:
+  cassandra: false
+  elasticsearch: true
+
+storage:
+  type: elasticsearch
+
+# Use minimal configuration for local development
+elasticsearch:
+  replicas: 1
+  minimumMasterNodes: 1
+
+  resources:
+    requests:
+      cpu: 0.5
+      memory: 1Gi
