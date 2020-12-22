@@ -12,7 +12,7 @@ Learn monitoring on kubernetes the right way by doing using OSS tools
 Setup Minikube with virtualbox driver and switched to minikube kubectl context
 
 ```bash
-minikube start --driver=docker
+minikube start --driver=virtualbox
 minikube update-context
 ```
 
